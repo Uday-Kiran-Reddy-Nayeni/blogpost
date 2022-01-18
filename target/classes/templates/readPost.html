@@ -10,19 +10,19 @@
 <body>
 <div class="container">
     <div align="center" style="margin:5px;">
-    <table>
-        <td><a href="/dashboard">
-            <button>Home</button>
-        </a></td>
-    </table>
+        <table>
+            <td><a href="/dashboard">
+                <button>Home</button>
+            </a></td>
+        </table>
     </div>
     <div style="background:#eee;padding:15px;margin:5px;" align="center">
         <div align="center"><h1><span th:text="${post.title}"></span></h1></div>
         <span style="font-weight:bold;">Author:</span>
         <span th:text="${post.author}"></span><br>
-<!--        <label class="font-weight-bold">Published At:</label>-->
-<!--        <span th:text="${post.publishedAt}"></span>-->
-<!--        <br>-->
+        <!--        <label class="font-weight-bold">Published At:</label>-->
+        <!--        <span th:text="${post.publishedAt}"></span>-->
+        <!--        <br>-->
         <span style="font-weight:bold;">Tags:</span>
         <span th:text="${tag}"></span><br>
         <span style="font-weight:bold;">Content:</span>
@@ -58,34 +58,6 @@
                 </div>
                 <br>
             </div>
-            <!--                <table class="table-primary" border="2" cellpadding="5">-->
-            <!--                    <thead>-->
-            <!--                    <tr class="table-light" align="center">-->
-            <!--                        <td>Comment</td>-->
-            <!--                        <td>Updated At</td>-->
-            <!--                        <div>-->
-            <!--                            <td>Edit</td>-->
-            <!--                            <td>Delete</td>-->
-            <!--                        </div>-->
-            <!--                    </tr>-->
-            <!--                    </thead>-->
-            <!--                    <tbody>-->
-            <!--                    <tr align="center">-->
-            <!--                        <td>-->
-            <!--                            <snap th:text="${comment.description}"></snap>-->
-            <!--                        </td>-->
-            <!--                        <td>-->
-            <!--                            <snap th:text="${comment.updatedAt}"></snap>-->
-            <!--                        </td>-->
-            <!--                        <td><a th:href="@{/updateCommentPage/{id}(id=${comment.id})}">Edit</a>-->
-            <!--                        </td>-->
-            <!--                        <td>-->
-            <!--                            <a th:href="@{'/read/delete/'+${post.id}+'/'+${comment.id}}">Delete</a>-->
-
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    </tbody>-->
-            <!--                </table>-->
         </div>
     </div>
 </div>

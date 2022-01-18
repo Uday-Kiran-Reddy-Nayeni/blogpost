@@ -16,17 +16,22 @@
 <h2 align="center">Create Post</h2>
 <div align="center">
     <form action="/savePost" th:action="@{/savePost}" th:object=${post}>
-            <input type="text" th:field="*{id}" hidden/>
-            <input type="text" th:field="*{title}" placeholder="title" style="width:768px;height:80px" class="field" required/><br>
-            <br>
-            <input type="text" th:field="*{author}" placeholder="author" style="width:768px;height:80px" class="field" readonly/><br>
-            <br>
-            <textarea type="text" th:field="*{excerpt}" placeholder="excerpt" style="width:768px;height:161px" class="field" required></textarea><br>
-            <br>
-            <textarea type="text" th:field="*{content}" placeholder="post content" style="width:768px;height:261px" class="field" required></textarea> <br>
-            <br>
-            <input type="text" name="helperTags" class="field" style="width:768px;height:80px" placeholder="Enter Tags With , Separated " th:value="${helperTags}" required/><br><br>
-            <input type="submit" class="field" value="Submit">
+        <input type="text" th:field="*{id}" hidden/>
+        <input type="text" th:field="*{title}" placeholder="title" style="width:768px;height:80px" class="field"
+               required/><br>
+        <br>
+        <input type="text" th:field="*{author}" placeholder="author" style="width:768px;height:80px" class="field"
+               readonly/><br>
+        <br>
+        <textarea type="text" th:field="*{excerpt}" placeholder="excerpt" style="width:768px;height:161px" class="field"
+                  required></textarea><br>
+        <br>
+        <textarea type="text" th:field="*{content}" placeholder="post content" style="width:768px;height:261px"
+                  class="field" required></textarea> <br>
+        <br>
+        <input type="text" name="helperTags" class="field" style="width:768px;height:80px"
+               placeholder="Enter Tags With , Separated " th:value="${helperTags}" required/><br><br>
+        <input type="submit" class="field" value="Submit">
     </form>
 </div>
 </body>

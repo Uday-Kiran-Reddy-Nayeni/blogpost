@@ -28,14 +28,16 @@ function sendingDates(){
         window.location.href = url;
     url = window.location;
 }
- </script>
+
+    </script>
 </head>
 <body>
 <div class="row">
     <div class="col col-sm-2" style="background:#eee;">
         <form action="/dashboard" method="get">
-            <input type="text" name="search" placeholder="Enter to search" th:value="${search}" class="field"><input type="submit"
-                                                                                                       value="Search">
+            <input type="text" name="search" placeholder="Enter to search" th:value="${search}" class="field"><input
+                type="submit"
+                value="Search">
             <br>
         </form>
         <div style="padding:10px;" class="field">

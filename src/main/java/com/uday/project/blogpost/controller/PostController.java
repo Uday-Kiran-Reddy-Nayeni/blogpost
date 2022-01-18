@@ -155,17 +155,34 @@ public class PostController {
 
     @RequestMapping("/delete/{id}")
     public String deletePost(@PathVariable(value = "id") int id) {
-        postService.deletePost(id);
+        String username = null;
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            username = getCurrentUsername();
+        }
+        Post post = postRepository.getById(id);
+        if (post.getAuthor().equalsIgnoreCase(username)) {
+            postService.deletePost(id);
+        }
         return "redirect:/";
     }
 
     @RequestMapping("/update/{id}")
     public String updatePost(@PathVariable(value = "id") int id, Model model) {
-        Post post = postService.updatePost(id);
-        String tags = tagService.findTagByPostId(id);
-        model.addAttribute("helperTags", tags);
-        model.addAttribute("post", post);
-        return "addPost";
+        String username = null;
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            username = getCurrentUsername();
+        }
+        Post currentPost = postRepository.getById(id);
+        if (currentPost.getAuthor().equalsIgnoreCase(username)) {
+            Post post = postService.updatePost(id);
+            String tags = tagService.findTagByPostId(id);
+            model.addAttribute("helperTags", tags);
+            model.addAttribute("post", post);
+            return "addPost";
+        }else{
+            return "redirect:/";
+        }
+
     }
 
     @GetMapping("/{pageNo}")

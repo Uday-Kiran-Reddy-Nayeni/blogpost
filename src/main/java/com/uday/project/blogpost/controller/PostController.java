@@ -168,7 +168,7 @@ public class PostController {
         return "addPost";
     }
 
-    @GetMapping("/dashboard/{pageNo}")
+    @GetMapping("/{pageNo}")
     public String paginationForAllPosts(@PathVariable(value = "pageNo") int pageNo,
                                         @RequestParam("sortField") String sortField,
                                         @RequestParam("sortDirection") String sortDirection, Model model) {

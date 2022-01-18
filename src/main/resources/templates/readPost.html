@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div align="center" style="margin:5px;">
+        <table>
+            <td><a href="/dashboard">
+                <button>Home</button>
+            </a></td>
+        </table>
+    </div>
+    <div style="background:#eee;padding:15px;margin:5px;" align="center">
+        <div align="center"><h1><span th:text="${post.title}"></span></h1></div>
+        <span style="font-weight:bold;">Author:</span>
+        <span th:text="${post.author}"></span><br>
+        <!--        <label class="font-weight-bold">Published At:</label>-->
+        <!--        <span th:text="${post.publishedAt}"></span>-->
+        <!--        <br>-->
+        <span style="font-weight:bold;">Tags:</span>
+        <span th:text="${tag}"></span><br>
+        <span style="font-weight:bold;">Content:</span>
+        <span th:text="${post.content}"></span><br>
+    </div>
+    <div align="center" style="background:#fff;padding:5px">
+        <h2 align="center">Write Comments</h2>
+        <div class="border border-light border-2">
+            <form th:action="@{/addComment/{postId}(postId=${post.id})}" th:object="${comment}">
+                <div class="inner">
+                    <input type="text" th:field="*{id}" hidden>
+                    <br><label>Name:</label>
+                    <input type="text" th:field="*{name}" required/><br/>
+                    <br><label>Email:</label>
+                    <input type="text" th:field="*{email}" required/><br/>
+                    <br><label>Comment:</label>
+                    <input type="text" th:field="*{description}" required/><br/>
+                    <br>
+                    <input type="submit" value="Add Comment"><br><br>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div align="center" style="background:#eee;padding:5px;">
+        <h2>Comments</h2>
+        <div id="commentsInner" th:each="comment: ${comments}">
+            <div style="width:500px; height:60px; border:2px solid #fff; padding:5px;margin:5px;">
+                <snap th:text="${comment.description}"></snap>
+                <br>
+                <div th:if="${username} eq ${post.author} or ${username} eq ${admin}">
+                    <a th:href="@{/updateCommentPage/{id}(id=${comment.id})}">Edit</a>
+                    <a th:href="@{'/read/delete/'+${post.id}+'/'+${comment.id}}">Delete</a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

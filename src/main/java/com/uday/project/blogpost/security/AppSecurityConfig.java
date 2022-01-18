@@ -87,7 +87,7 @@ public class AppSecurityConfig {
                     .usernameParameter("email")
                     .passwordParameter("password")
                     .loginProcessingUrl("/checkLogin")
-                    .defaultSuccessUrl("/dashboard")
+                    .defaultSuccessUrl("/")
                     .permitAll()
                     .and()
                     .logout()

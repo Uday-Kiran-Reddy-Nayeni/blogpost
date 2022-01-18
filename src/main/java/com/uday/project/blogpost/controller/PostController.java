@@ -35,7 +35,7 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @RequestMapping("/dashboard")
+    @RequestMapping("/")
     public String dashboard(@RequestParam(value = "search", required = false) String search,
                             @RequestParam(value = "filters", required = false) List<String> filters,
                             @RequestParam(value = "pageNo", required = false) Integer pageNo,
@@ -56,7 +56,6 @@ public class PostController {
             return paginationForAllPosts(pageNo, sortField, sortDirection, model);
         } else if (search == null && (filters != null || (dateFrom != null && dateTo != null))) {
             if (filters == null) {
-                System.out.println("entered search of ");
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 Date dateF = null;
                 Date dateT = null;
@@ -72,7 +71,6 @@ public class PostController {
                 return PaginatedForFilteredPosts(postService.findAllBySearchForFilter(filters), pageNo, sortField, sortDirection, model);
 
             } else {
-                System.out.println("kalai");
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 Date dateF = null;
                 Date dateT = null;
@@ -152,13 +150,13 @@ public class PostController {
     @RequestMapping("/savePost")
     public String savePost(@ModelAttribute("post") Post post, @RequestParam("helperTags") String helperTags) {
         postService.savePost(post, helperTags);
-        return "redirect:/dashboard";
+        return "redirect:/";
     }
 
     @RequestMapping("/delete/{id}")
     public String deletePost(@PathVariable(value = "id") int id) {
         postService.deletePost(id);
-        return "redirect:/dashboard";
+        return "redirect:/";
     }
 
     @RequestMapping("/update/{id}")
@@ -255,7 +253,7 @@ public class PostController {
 
     @RequestMapping("/reset")
     public String reset() {
-        return "redirect:/dashboard";
+        return "redirect:/";
     }
 
     private String getCurrentUsername() {

@@ -34,14 +34,14 @@ function sendingDates(){
 <body>
 <div class="row">
     <div class="col col-sm-2" style="background:#eee;">
-        <form action="/dashboard" method="get">
+        <form action="/" method="get">
             <input type="text" name="search" placeholder="Enter to search" th:value="${search}" class="field"><input
                 type="submit"
                 value="Search">
             <br>
         </form>
         <div style="padding:10px;" class="field">
-            <a th:href="@{'/dashboard/' + ${currentPage} + '?sortField=publishedAt&sortDirection=' + ${reverseSortDirection}}">
+            <a th:href="@{'/' + ${currentPage} + '?sortField=publishedAt&sortDirection=' + ${reverseSortDirection}}">
                 <button>Sort By Time</button>
             </a>
         </div>
@@ -102,7 +102,7 @@ function sendingDates(){
     <div>
         <td>
             <button class="page-link" th:if="${currentPage > 1}"
-                    th:href="@{'/dashboard/'+${currentPage - 1}+ '?sortField='+${sortField}+'&sortDirection=' + ${sortDirection}}
+                    th:href="@{'/'+${currentPage - 1}+ '?sortField='+${sortField}+'&sortDirection=' + ${sortDirection}}
                 ">Previous
             </button>
         </td>
@@ -110,7 +110,7 @@ function sendingDates(){
     <div class="next">
         <td>
             <button class="page-link" th:if="${currentPage < totalPages}"
-                    th:href="@{'/dashboard/'+${currentPage + 1}+ '?sortField='+${sortField}+'&sortDirection=' + ${sortDirection}}">
+                    th:href="@{'/'+${currentPage + 1}+ '?sortField='+${sortField}+'&sortDirection=' + ${sortDirection}}">
                 Next
             </button>
         </td>

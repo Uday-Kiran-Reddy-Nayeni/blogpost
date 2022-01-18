@@ -180,7 +180,7 @@ public class PostController {
         int pageSize = 10;
         Page<Post> page = postService.findPaginated(pageNo, pageSize, sortField, sortDirection);
         List<Post> posts = page.getContent();
-        model.addAttribute("admin", "uday");
+        model.addAttribute("admin", "Uday");
         model.addAttribute("username", username);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
@@ -238,7 +238,7 @@ public class PostController {
         if (SecurityContextHolder.getContext().getAuthentication() != null) {
             username = getCurrentUsername();
         }
-        model.addAttribute("admin", "uday");
+        model.addAttribute("admin", "Uday");
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", pageList.getPageCount());
         model.addAttribute("sortField", sortField);
